@@ -1,7 +1,7 @@
 const { MongoClient, ObjectId } = require('mongodb');
 const { config } = require('../config');
 
-const DB_NAME = config.dbName;
+const DB_NAME = config.dbProdName;
 const MONGO_URI = config.dbUrl;
 
 class MongoLib {
