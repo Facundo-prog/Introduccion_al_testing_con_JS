@@ -1,9 +1,6 @@
 const request = require('supertest');
 const { MongoClient } = require('mongodb');
-// const { config } = require('../config');
-const dbUrl = 'mongodb://db_user:WbVleQPYqVP7JBkM@ac-byknmyj-shard-00-00.c7uzhx2.mongodb.net:27017,ac-byknmyj-shard-00-01.c7uzhx2.mongodb.net:27017,ac-byknmyj-shard-00-02.c7uzhx2.mongodb.net:27017/?ssl=true&replicaSet=atlas-nc10ww-shard-0&authSource=admin&retryWrites=true&w=majority';
-const dbTestName = 'test';
-
+const { config } = require('../config');
 const createApp = require('../app');
 
 describe('Test for books', () => {
@@ -14,12 +11,12 @@ describe('Test for books', () => {
   beforeAll(async () => {
     app = createApp();
     server = app.listen(3003);
-    const client = new MongoClient(dbUrl, {
+    const client = new MongoClient(config.dbUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
     await client.connect();
-    db = client.db(dbTestName);
+    db = client.db(config.dbTestName);
   });
 
   afterAll(async () => {

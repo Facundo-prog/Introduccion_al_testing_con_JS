@@ -56,19 +56,6 @@ jobs:
   e2e-test:
     runs-on: ubuntu-latest
 
-    # container:
-    #  image: node:16
-    #
-    #services:
-    #  mongo-e2e:
-    #    image: mongo:4.4
-    #  ports:
-    #    - 27017:27017
-    #  env:
-    #    MONGO_INITDB_ROOT_USERNAME: root
-    #    MONGO_INITDB_ROOT_PASSWORD: admin1234
-
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -87,3 +74,7 @@ jobs:
       - name: Run e2e test
         shell: bash
         run: npm run test:e2e
+        env:
+          DB_PROD_NAME: demo
+          DB_TEST_NAME: test
+          DB_URL: mongodb://db_user:WbVleQPYqVP7JBkM@ac-byknmyj-shard-00-00.c7uzhx2.mongodb.net:27017,ac-byknmyj-shard-00-01.c7uzhx2.mongodb.net:27017,ac-byknmyj-shard-00-02.c7uzhx2.mongodb.net:27017/?ssl=true&replicaSet=atlas-nc10ww-shard-0&authSource=admin&retryWrites=true&w=majority
