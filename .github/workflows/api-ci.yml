@@ -11,6 +11,27 @@ defaults:
     working-directory: ./api
 
 jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+          cache: npm
+          cache-dependency-path: ./api/package-lock.json
+
+      - name: Install dependencys
+        shell: bash
+        run: npm ci
+
+      - name: Run linter
+        shell: bash
+        run: npm run lint
+
   unit-test:
     runs-on: ubuntu-latest
     steps:
@@ -31,3 +52,36 @@ jobs:
       - name: Run unit test
         shell: bash
         run: npm run test
+
+  e2e-test:
+    runs-on: ubuntu-latest
+    # container:
+    #  image: node:16
+    #
+    #services:
+    #  mongo-e2e:
+    #    image: mongo:4.4
+    #  ports:
+    #    - 27017:27017
+    #  env:
+    #    MONGO_INITDB_ROOT_USERNAME: root
+    #    MONGO_INITDB_ROOT_PASSWORD: admin1234
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+          cache: npm
+          cache-dependency-path: ./api/package-lock.json
+
+      - name: Install dependencys
+        shell: bash
+        run: npm ci
+
+      - name: Run e2e test
+        shell: bash
+        run: npm run test:e2e
