@@ -21,9 +21,8 @@ describe('Test for BooksService', () => {
       mockSpyGetAll.mockResolvedValue(fakeBooks);
 
       const books = await service.getBooks({});
-      expect(books.length).toEqual(fakeBooks.length);
-      console.log(books);
 
+      expect(books.length).toEqual(fakeBooks.length);
       expect(mockSpyGetAll).toHaveBeenCalled();
       expect(mockSpyGetAll).toHaveBeenCalledWith('books', {});
     });
@@ -32,9 +31,8 @@ describe('Test for BooksService', () => {
       mockSpyGetAll.mockResolvedValue(fakeBook);
 
       const books = await service.getBooks({ name: 'Los Pitufos' });
-      console.log(books);
-      expect(books.name).toEqual(fakeBook.name);
 
+      expect(books.name).toEqual(fakeBook.name);
       expect(mockSpyGetAll).toHaveBeenCalledTimes(1);
       expect(mockSpyGetAll).toHaveBeenCalledWith('books', { name: 'Los Pitufos' });
     });
