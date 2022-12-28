@@ -1,9 +1,5 @@
 name: API CI
 
-# for normal repo
-# on: [push]
-
-# for monorepo
 on:
   push:
     paths:
@@ -14,8 +10,6 @@ defaults:
   run:
     working-directory: ./api
 
-
-#for all
 jobs:
   unit-test:
     runs-on: ubuntu-latest
@@ -37,5 +31,3 @@ jobs:
       - name: Run unit test
         shell: bash
         run: npm run test
-
-
