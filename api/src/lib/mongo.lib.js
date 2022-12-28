@@ -1,8 +1,8 @@
 const { MongoClient, ObjectId } = require('mongodb');
-const { config } = require('../config');
+// const { config } = require('../config');
 
-const DB_NAME = config.dbProdName;
-const MONGO_URI = config.dbUrl;
+const DB_NAME = 'demo';
+const MONGO_URI = 'mongodb://db_user:WbVleQPYqVP7JBkM@ac-byknmyj-shard-00-00.c7uzhx2.mongodb.net:27017,ac-byknmyj-shard-00-01.c7uzhx2.mongodb.net:27017,ac-byknmyj-shard-00-02.c7uzhx2.mongodb.net:27017/?ssl=true&replicaSet=atlas-nc10ww-shard-0&authSource=admin&retryWrites=true&w=majority';
 
 class MongoLib {
   constructor() {
