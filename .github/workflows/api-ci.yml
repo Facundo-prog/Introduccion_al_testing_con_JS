@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "./api/**"
-      - ".github/workflows/**"
+      - ".github/workflows/api-ci.yml"
 
 defaults:
   run:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Setup NodeJs
         uses: actions/setup-node@v3
-        whit:
+        with:
           node-version: 16.13.x
           cache: npm
           cache-dependency-path: ./api/package-lock.json
